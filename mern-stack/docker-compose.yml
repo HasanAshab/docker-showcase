@@ -1,0 +1,9 @@
+services:
+  client:
+    hostname: client
+    build:
+      context: ./client
+      target: dev
+    # command: python manage.py runserver 
+    ports:
+      - 81:5000
