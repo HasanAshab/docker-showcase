@@ -1,11 +1,5 @@
-.DS_Store
-node_modules/
-npm-debug.log
+frontend/node_modules/
+backend/node_modules/
 .idea/
-dump.rdb
-.vscode/
-public/*
-dist
-coverage/
-.nyc_output/
-yarn.lock
+data
+*.log

@@ -1,0 +1,9 @@
+services:
+  frontend:
+    build:
+      context: frontend
+      # target: development
+    ports:
+      - 5000:80
+    # stdin_open: true
+    restart: always
