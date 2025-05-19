@@ -16,9 +16,7 @@ export default class App extends React.Component {
   componentDidMount() {    
     axios
       .get("/api")
-      .then((response) => {
-        console.log(response.data);
-        
+      .then((response) => {        
         this.setState({
           todos: response.data.data,
         });

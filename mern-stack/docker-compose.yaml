@@ -4,9 +4,9 @@ services:
       context: frontend
       target: prod
     ports:
-      - 5000:3000
+      - 5000:5000
     # stdin_open: true
-    restart: always
+    # restart: always
     networks:
       - react-express
     depends_on:
@@ -17,8 +17,8 @@ services:
       context: backend
       target: prod
     expose:
-      - 3000
-    restart: always
+      - 5000
+    # restart: always
     networks:
       - react-express
 

@@ -5,13 +5,18 @@ COPY package*.json .
 RUN npm i
 
 
-FROM base as build
+FROM base as dev
+COPY . .
+ENTRYPOINT [ "npm", "run", "start" ]
+
+
+FROM base AS build
 
 COPY . .
 RUN npm run build
 
 
-FROM nginx:alpine as prod
+FROM nginx:alpine AS prod
 
 COPY --from=build /app/.nginx/nginx.conf /etc/nginx/conf.d/default.conf
 

@@ -6,8 +6,8 @@ COPY package*.json .
 RUN npm i
 
 
-FROM base as prod
+FROM base AS prod
 
 COPY . .
-EXPOSE 3000
+EXPOSE 5000
 ENTRYPOINT [ "npm" , "start" ]
