@@ -9,4 +9,5 @@ RUN npm i
 FROM base as prod
 
 COPY . .
+EXPOSE 3000
 ENTRYPOINT [ "npm" , "start" ]

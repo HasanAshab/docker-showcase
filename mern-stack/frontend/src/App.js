@@ -13,10 +13,12 @@ export default class App extends React.Component {
     };
   }
 
-  componentDidMount() {
+  componentDidMount() {    
     axios
       .get("/api")
       .then((response) => {
+        console.log(response.data);
+        
         this.setState({
           todos: response.data.data,
         });
