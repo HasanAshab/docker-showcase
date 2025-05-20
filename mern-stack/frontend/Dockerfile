@@ -14,13 +14,13 @@ ENTRYPOINT [ "npm", "start" ]
 
 FROM base AS build
 
-COPY ./src ./public ./
+COPY . .
 RUN npm run build
 
 
 FROM nginx:alpine AS prod
 
-COPY --from=build /app/.nginx/nginx.conf /etc/nginx/conf.d/default.conf
+COPY /.nginx/nginx.conf /etc/nginx/conf.d/default.conf
 
 WORKDIR /usr/share/nginx/html
 
