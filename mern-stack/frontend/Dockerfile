@@ -6,13 +6,15 @@ RUN npm i
 
 
 FROM base as dev
+
 COPY . .
-ENTRYPOINT [ "npm", "run", "start" ]
+
+ENTRYPOINT [ "npm", "start" ]
 
 
 FROM base AS build
 
-COPY . .
+COPY ./src ./public ./
 RUN npm run build
 
 

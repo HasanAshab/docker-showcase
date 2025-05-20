@@ -1,20 +1,21 @@
 services:
   frontend:
+    restart: always
     build:
       context: frontend
-      target: dev
+      target: prod
     ports:
       - 5000:5000
-    stdin_open: true
     networks:
       - react-express
     depends_on:
       - backend
 
   backend:
+    restart: always
     build:
       context: backend
-      target: dev
+      target: prod
     expose:
       - 5000
     networks:
