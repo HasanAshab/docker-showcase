@@ -13,7 +13,7 @@ const db = require("./db");
 const app = express();
 
 //connection from db here
-// db.connect(app);
+db.connect(app);
 
 app.use(cors());
 app.use(bodyParser.json());
