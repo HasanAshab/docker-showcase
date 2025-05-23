@@ -3,18 +3,15 @@ WORKDIR /app
 
 COPY package*.json .
 RUN npm i
-
-
-FROM base as dev
-
 COPY . .
+
+FROM base AS dev
 
 ENTRYPOINT [ "npm", "start" ]
 
 
 FROM base AS build
 
-COPY . .
 RUN npm run build
 
 
