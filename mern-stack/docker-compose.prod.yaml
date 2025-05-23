@@ -30,7 +30,7 @@ services:
     expose:
       - 27017
     volumes:
-      - mongo_data:/data/db
+      - mongo-data:/data/db
     networks:
       - express-mongo
 
@@ -39,4 +39,4 @@ networks:
   express-mongo:
 
 volumes:
-  mongo_data:
+  mongo-data:
