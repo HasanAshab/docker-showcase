@@ -25,7 +25,6 @@ services:
       - CHOKIDAR_USEPOLLING=true
     expose:
       - 5000
-    stdin_open: true
     volumes:
       - ./backend:/app
       - /app/node_modules
@@ -36,7 +35,6 @@ services:
       - mongo
 
   mongo:
-    # restart: always
     image: mongo:4.4
     expose:
       - 27017

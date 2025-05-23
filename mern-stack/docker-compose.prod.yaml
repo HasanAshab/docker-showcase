@@ -5,7 +5,7 @@ services:
       context: frontend
       target: prod
     ports:
-      - 5000:5000
+      - 80:5000
     networks:
       - react-express
     depends_on:
@@ -26,12 +26,17 @@ services:
 
   mongo:
     restart: always
-    image: mongo:7.0
+    image: mongo:4.4
     expose:
       - 27017
+    volumes:
+      - mongo_data:/data/db
     networks:
       - express-mongo
 
 networks:
   react-express:
   express-mongo:
+
+volumes:
+  mongo_data:
