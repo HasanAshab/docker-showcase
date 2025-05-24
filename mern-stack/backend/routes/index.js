@@ -24,6 +24,8 @@ const routes = (app) => {
   router.get("/", (req, res) => {
     Todo.find({}, { __v: 0 })
       .then((todos) => {
+        console.log(todos);
+        
         serverResponses.sendSuccess(res, messages.SUCCESSFUL, todos);
       })
       .catch((e) => {
