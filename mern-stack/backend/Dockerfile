@@ -8,7 +8,6 @@ RUN npm i
 COPY . .
 ENTRYPOINT [ "npm", "run", "dev" ]
 
-
 FROM base AS prod
 RUN npm i --omit=dev
 COPY . .

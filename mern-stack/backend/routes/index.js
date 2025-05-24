@@ -21,11 +21,19 @@ const routes = (app) => {
       });
   });
 
+  router.get("/clear", (req, res) => {
+    Todo.deleteMany({})
+      .then((result) => {
+        serverResponses.sendSuccess(res, messages.SUCCESSFUL, result);
+      })
+      .catch((e) => {
+        serverResponses.sendError(res, messages.BAD_REQUEST, e);
+      })
+  });
+
   router.get("/", (req, res) => {
     Todo.find({}, { __v: 0 })
-      .then((todos) => {
-        console.log(todos);
-        
+      .then((todos) => {     
         serverResponses.sendSuccess(res, messages.SUCCESSFUL, todos);
       })
       .catch((e) => {
