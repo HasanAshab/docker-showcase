@@ -10,6 +10,9 @@ ENTRYPOINT [ "npm", "run", "dev" ]
 
 
 FROM base AS prod
-RUN npm i --omi=dev
+RUN npm i --omit=dev
 COPY . .
+RUN addgroup --system app && adduser --system --group app && \
+  chown -R app:app /app
+USER app
 ENTRYPOINT [ "npm" , "start" ]
