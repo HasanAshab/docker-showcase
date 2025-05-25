@@ -19,11 +19,11 @@ services:
     build:
       context: server
       target: dev
-    expose:
-      - 5000
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - 8000:8000
     volumes:
       - ./server:/app
-      - /app/node_modules
     networks:
       - client-server
       - server-db
