@@ -11,7 +11,7 @@ services:
       - ./frontend:/app
       - /app/node_modules
     networks:
-      - react-express
+      - frontend-backend
     depends_on:
       - backend
 
@@ -26,8 +26,8 @@ services:
       - ./backend:/app
       - /app/node_modules
     networks:
-      - react-express
-      - express-mongo
+      - frontend-backend
+      - backend-db
     depends_on:
       - mongo
 
@@ -38,11 +38,11 @@ services:
     volumes:
       - mongo-data:/data/db
     networks:
-      - express-mongo
+      - backend-db
 
 networks:
-  react-express:
-  express-mongo:
+  frontend-backend:
+  backend-db:
 
 volumes:
   mongo-data:

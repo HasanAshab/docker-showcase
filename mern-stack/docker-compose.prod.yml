@@ -8,7 +8,7 @@ services:
     ports:
       - 80:5000
     networks:
-      - react-express
+      - frontend-backend
     depends_on:
       - backend
 
@@ -21,8 +21,8 @@ services:
     expose:
       - 5000
     networks:
-      - react-express
-      - express-mongo
+      - frontend-backend
+      - backend-db
     depends_on:
       - mongo
 
@@ -32,13 +32,13 @@ services:
     expose:
       - 27017
     volumes:
-      - mongo-data:/data/db
+      - db-data:/data/db
     networks:
-      - express-mongo
+      - backend-db
 
 networks:
-  react-express:
-  express-mongo:
+  frontend-backend:
+  backend-db:
 
 volumes:
-  mongo-data:
+  db-data:
