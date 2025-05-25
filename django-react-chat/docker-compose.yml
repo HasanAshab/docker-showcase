@@ -38,8 +38,8 @@ services:
       POSTGRES_PASSWORD: ranker_pass
     volumes:
       - db-data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
+    networks:
+      - server-db
 
 networks:
   client-server:
