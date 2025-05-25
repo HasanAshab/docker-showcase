@@ -20,6 +20,7 @@ services:
       context: server
       target: dev
     command: python manage.py runserver 0.0.0.0:8000
+    env_file: ./server/.env.dev
     ports:
       - 8000:8000
     volumes:
@@ -32,10 +33,7 @@ services:
 
   db:
     image: postgres:14
-    environment:
-      POSTGRES_DB: ranker
-      POSTGRES_USER: ranker_user
-      POSTGRES_PASSWORD: ranker_pass
+    env_file: ./db/.env.dev
     volumes:
       - db-data:/var/lib/postgresql/data
     networks:
