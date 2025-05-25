@@ -24,11 +24,11 @@ services:
       - frontend-backend
       - backend-db
     depends_on:
-      - mongo
+      - db
 
-  mongo:
+  db:
     restart: always
-    image: mongo:4.4
+    image: db:4.4
     expose:
       - 27017
     volumes:

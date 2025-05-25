@@ -27,21 +27,23 @@ services:
     networks:
       - client-server
       - server-db
-    # depends_on:
-    #   - mongo
+    depends_on:
+      - db
 
-  # mongo:
-  #   image: mongo:4.4
-  #   expose:
-  #     - 27017
-  #   volumes:
-  #     - mongo-data:/data/db
-  #   networks:
-  #     - server-db
+  db:
+    image: postgres:14
+    environment:
+      POSTGRES_DB: ranker
+      POSTGRES_USER: ranker_user
+      POSTGRES_PASSWORD: ranker_pass
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
 
 networks:
   client-server:
   server-db:
 
 volumes:
-  mongo-data:
+  db-data:

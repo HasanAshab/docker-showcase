@@ -29,14 +29,14 @@ services:
       - frontend-backend
       - backend-db
     depends_on:
-      - mongo
+      - db
 
-  mongo:
-    image: mongo:4.4
+  db:
+    image: db:4.4
     expose:
       - 27017
     volumes:
-      - mongo-data:/data/db
+      - db-data:/data/db
     networks:
       - backend-db
 
@@ -45,4 +45,4 @@ networks:
   backend-db:
 
 volumes:
-  mongo-data:
+  db-data:
