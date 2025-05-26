@@ -17,7 +17,8 @@ services:
     build:
       context: server
       target: prod
-    command: python manage.py runserver 0.0.0.0:8000
+    command: python manage.py runserver 0.0.0.0:8000 #todo
+    env_file: ./server/.env.prod
     ports:
       - 8000:8000
     volumes:
@@ -31,10 +32,7 @@ services:
   db:
     restart: always
     image: postgres:14
-    environment:
-      POSTGRES_DB: ranker
-      POSTGRES_USER: ranker_user
-      POSTGRES_PASSWORD: ranker_pass
+    env_file: ./db/.env.prod
     volumes:
       - db-data:/var/lib/postgresql/data
     networks:
