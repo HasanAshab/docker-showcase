@@ -10,12 +10,11 @@ ENTRYPOINT [ "npm", "start" ]
 FROM base AS build
 RUN npm run build
 
-FROM nginx:alpine AS prod
+FROM nginx:1.23.2-alpine AS prod
 COPY /.nginx/nginx.conf /etc/nginx/conf.d/default.conf
-WORKDIR /usr/share/nginx/html
-RUN rm -rf ./*
-COPY --from=build /app/build .
-RUN addgroup --system app && adduser --system --group app && \
-  chown -R app:app /usr/share/nginx/html
-USER app
+RUN rm -rf .//usr/share/nginx/html/*
+COPY --from=build /app/build /usr/share/nginx/html
+RUN touch /var/run/nginx.pid
+RUN chown -R nginx:nginx /var/run/nginx.pid /usr/share/nginx/html /var/cache/nginx /var/log/nginx /etc/nginx/conf.d
+USER nginx
 ENTRYPOINT ["nginx", "-g", "daemon off;"]

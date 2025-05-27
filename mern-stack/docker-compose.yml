@@ -32,7 +32,7 @@ services:
       - db
 
   db:
-    image: db:4.4
+    image: mongo:4.4
     expose:
       - 27017
     volumes:

@@ -1,6 +1,5 @@
 services:
   frontend:
-    restart: always
     build:
       context: frontend
       target: prod
@@ -13,7 +12,6 @@ services:
       - backend
 
   backend:
-    restart: always
     build:
       context: backend
       target: prod
@@ -27,8 +25,7 @@ services:
       - db
 
   db:
-    restart: always
-    image: db:4.4
+    image: mongo:4.4
     expose:
       - 27017
     volumes:
