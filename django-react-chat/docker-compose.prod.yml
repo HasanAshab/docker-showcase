@@ -1,6 +1,5 @@
 services:
   client:
-    restart: always
     build:
       context: client
       target: prod
@@ -13,7 +12,6 @@ services:
       - server
 
   server:
-    restart: always
     build:
       context: server
       target: prod
@@ -21,8 +19,6 @@ services:
     env_file: ./server/.env.prod
     ports:
       - 8000:8000
-    volumes:
-      - ./server:/app
     networks:
       - client-server
       - server-db
@@ -30,7 +26,6 @@ services:
       - db
 
   db:
-    restart: always
     image: postgres:14
     env_file: ./db/.env.prod
     volumes:
