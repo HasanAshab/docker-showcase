@@ -1,10 +1,12 @@
+import uuid
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from shortuuidfield import ShortUUIDField
+
 
 class User(AbstractUser):
-	userId = ShortUUIDField()
+	userId = models.UUIDField(default=uuid.uuid4)
 	image = models.ImageField(upload_to="user")
+
 
 class OnlineUser(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)

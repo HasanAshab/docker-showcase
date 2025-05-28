@@ -16,9 +16,11 @@ services:
       context: server
       target: prod
     command: gunicorn server.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - media-volume:/app/media
     env_file: ./server/.env.prod
-    expose:
-      - 8000
+    ports:
+      - 8000:8000
     networks:
       - client-server
       - server-db
@@ -38,4 +40,5 @@ networks:
   server-db:
 
 volumes:
+  media-volume:
   db-data:
